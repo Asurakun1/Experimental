@@ -1,0 +1,24 @@
+package GameTest;
+
+import static org.lwjgl.glfw.GLFW.glfwGetTime;
+
+public class FpsTimer {
+
+	public FpsTimer() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	private double getTime() {
+		return glfwGetTime();
+	}
+	
+	private float getDelta() {
+		double time = getTime();
+		float delta = (float) (time - lastLoopTime);
+		lastLoopTime = time;
+		timeCount += delta;
+		return delta;
+		
+	}
+}

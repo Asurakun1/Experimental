@@ -1,0 +1,9 @@
+package GameTest;
+
+public class FpsTimer {
+
+	public FpsTimer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
