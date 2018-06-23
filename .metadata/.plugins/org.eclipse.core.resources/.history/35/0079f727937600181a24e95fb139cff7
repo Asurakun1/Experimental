@@ -1,0 +1,12 @@
+package GameTest;
+import java.util.Random;
+
+public class simplematch {
+
+	public simplematch() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}

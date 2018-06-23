@@ -1,0 +1,13 @@
+package GameTest;
+
+public class main {
+	
+//	public static Display screen = new Display();
+
+	public static void main(String[] args) {
+		Display screen = new Display();
+		
+		screen.getsome();
+
+	}
+}

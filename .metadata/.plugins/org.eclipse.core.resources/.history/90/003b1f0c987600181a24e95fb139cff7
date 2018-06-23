@@ -1,0 +1,10 @@
+package GameTest;
+
+
+public class Display {
+	
+	public Display(int width, int height, String title) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

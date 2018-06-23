@@ -1,0 +1,16 @@
+package GameTest;
+
+
+public class Display {
+	
+	private int width, height;
+	private String title;
+	
+	public Display(int width, int height, String title) {
+		// TODO Auto-generated constructor stub
+		
+		this.width = width;
+		this.height = height;
+	}
+
+}

@@ -1,0 +1,11 @@
+package GameTest;
+
+public class main {
+	
+	simplemath math = new simplemath();
+	public static void main(String[] args) {
+		int answer;
+		
+
+	}
+}

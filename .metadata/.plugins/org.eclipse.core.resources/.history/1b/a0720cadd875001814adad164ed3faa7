@@ -1,0 +1,49 @@
+package testimh;
+import org.lwjgl.*;
+import org.lwjgl.glfw.*;
+import org.lwjgl.opengl.*;
+import org.lwjgl.system.*;
+
+import java.nio.*;
+
+import static org.lwjgl.glfw.Callbacks.*;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.system.MemoryStack.*;
+import static org.lwjgl.system.MemoryUtil.*;
+
+public class main {
+	
+	private static GLFWErrorCallback errorCallback = GLFWErrorCallback.createPrint(System.err);
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		glfwSetErrorCallback(errorCallback);
+		
+		if(!glfwInit()) {
+			throw new IllegalStateException("Can't open");
+		}
+	
+		long window = glfwCreateWindow(1024, 768, "example", NULL, NULL);
+	
+		if(window == NULL){
+			glfwTerminate();
+			throw new RuntimeException("Failed to load");
+		}
+		
+		GLFWKeyCallback keyCallback = new GLFWKeyCallback() {
+
+			@Override
+			public void invoke(long window, int key, int scancode, int action, int mods) {
+				// TODO Auto-generated method stub
+				if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+					glfwSetWindowShouldClose(window, true);
+				}
+			}
+			
+		};
+		
+		glfwSetKeyCallback(window, keyCallback);
+
+	}
+}

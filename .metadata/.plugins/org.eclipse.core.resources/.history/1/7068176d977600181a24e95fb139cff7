@@ -1,0 +1,13 @@
+package GameTest;
+
+public class main {
+	
+	static simplemath math = new simplemath();
+	public static void main(String[] args) {
+//		math.addition();
+//		math.postRepeater();
+		math.subtraction();
+		math.postRepeater();
+
+	}
+}

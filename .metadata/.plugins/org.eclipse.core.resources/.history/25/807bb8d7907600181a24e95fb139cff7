@@ -1,0 +1,13 @@
+package GameTest;
+
+public class main {
+	
+	private static Display asdzf = new Display();
+
+	public static void main(String[] args) {
+		private static Display asdf = new Display();
+		// TODO Auto-generated method stub
+		asdf();
+	}
+
+}

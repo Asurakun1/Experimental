@@ -1,0 +1,100 @@
+package GameTest;
+
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
+import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
+import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
+import static org.lwjgl.glfw.GLFW.glfwDestroyWindow;
+import static org.lwjgl.glfw.GLFW.glfwInit;
+import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
+import static org.lwjgl.glfw.GLFW.glfwPollEvents;
+import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
+import static org.lwjgl.glfw.GLFW.glfwSetKeyCallback;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+import static org.lwjgl.glfw.GLFW.glfwTerminate;
+import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glVertex3f;
+import static org.lwjgl.system.MemoryUtil.NULL;
+
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.opengl.GL;
+
+public class Display {
+	
+	private int width, height;
+	private String title;
+	private long window;
+
+	//error call back
+	private static GLFWErrorCallback errCallback = GLFWErrorCallback.createPrint(System.err);
+	//key call back
+	
+	private static GLFWKeyCallback keyCallback = new GLFWKeyCallback() {
+		@Override
+		public void invoke(long window, int key, int scancode, int action, int mods) {
+			if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+				glfwSetWindowShouldClose(window, true);
+			}
+		}
+	};
+
+	
+	public Display(int width, int height, String title) {
+		// TODO Auto-generated constructor stub
+		
+		this.width = width;
+		this.height = height;
+		this.title = title;
+		
+		glfwSetErrorCallback(errCallback);
+		
+		if(!glfwInit()) {
+			throw new IllegalStateException("Unable to initialize");
+		}
+		
+		window = glfwCreateWindow(width,height, "title", NULL, NULL);
+		if(window == NULL) {
+			glfwTerminate();
+			throw new RuntimeException("Failed to create window");
+		}
+		
+		glfwSetKeyCallback(window, keyCallback);
+		
+		glfwMakeContextCurrent(window);
+		GL.createCapabilities();
+	}
+	
+	private void init() {
+		glfwSetErrorCallback(errCallback);
+		
+		if(!glfwInit()) {
+			throw new IllegalStateException("Unable to initialize");
+		}
+	}
+	
+	private void run() {
+		while(!glfwWindowShouldClose(window)) {
+			
+            glBegin(GL_TRIANGLES);
+            glColor3f(1f, 0f, 0f);
+            glVertex3f(-0.6f, -0.4f, 0f);
+            glColor3f(0f, 1f, 0f);
+            glVertex3f(0.6f, -0.4f, 0f);
+            glColor3f(0f, 0f, 1f);
+            glVertex3f(0f, 0.6f, 0f);
+            glEnd();
+			
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+		}
+		
+		glfwDestroyWindow(window);
+		keyCallback.free();
+	}
+
+}
