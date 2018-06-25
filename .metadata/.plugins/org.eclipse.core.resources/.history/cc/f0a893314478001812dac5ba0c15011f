@@ -1,0 +1,14 @@
+package externalPackage;
+
+public class MainJ {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Stats newChar = new Stats();
+		
+		newChar.getStats();
+//		newChar.addExp(1101);
+		newChar.addExp(5000);
+	}
+
+}

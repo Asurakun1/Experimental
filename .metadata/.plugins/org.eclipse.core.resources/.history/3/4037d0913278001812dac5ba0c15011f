@@ -1,0 +1,12 @@
+package externalPackage;
+
+public class MainJ {
+	
+	Sword myBlade = new Sword();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

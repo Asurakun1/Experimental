@@ -1,0 +1,9 @@
+package GameTest;
+
+public class timer {
+
+	public timer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

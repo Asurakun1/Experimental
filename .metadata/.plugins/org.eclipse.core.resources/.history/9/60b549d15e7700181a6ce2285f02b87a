@@ -1,0 +1,112 @@
+package GameTest;
+
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+
+import org.lwjgl.Version;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.BufferUtils;
+
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL30.*;
+import static org.lwjgl.system.MemoryUtil.NULL;
+public class Display{
+	
+	private int width, height;
+	private String title;
+	private long window;
+
+	//error call back
+	private static GLFWErrorCallback errCallback = GLFWErrorCallback.createPrint(System.err);
+	//key call back
+	
+	private static GLFWKeyCallback keyCallback = new GLFWKeyCallback() {
+		@Override
+		public void invoke(long window, int key, int scancode, int action, int mods) {
+			if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+				glfwSetWindowShouldClose(window, true);
+			}
+		}
+	};
+
+	
+	public Display(int width, int height, String title) {
+		//referring variables to its own object rather than elsewhere.
+		this.width = width;
+		this.height = height;
+		this.title = title;
+	}
+	
+	
+	private void init() {
+		System.out.println("Starting...");
+		glfwSetErrorCallback(errCallback);
+		
+		if(!glfwInit()) {
+			throw new IllegalStateException("Unable to initialize");
+		}
+		
+		glfwDefaultWindowHints();
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+		
+		//This creates the screen
+		window = glfwCreateWindow(width,height, title, NULL, NULL);
+		if(window == NULL) {
+			glfwTerminate();
+			throw new RuntimeException("Failed to create window");
+		}
+		
+		//Exit key ESC is set (optional not really needed..)
+//		glfwSetKeyCallback(window, keyCallback);
+		
+		glfwMakeContextCurrent(window);
+		GL.createCapabilities();
+		
+		
+	}
+	
+	
+	//That function that holds everything together
+	private void gameLoop() {
+		
+		//the game that's running
+		int vao = glGenVertexArrays();
+		glBindVertextArray(vao);
+		
+		MemoryStack stack = MemoryStack.stackPush();
+		FloatBuffer vertices = stack.mallocFloat(3 * 6);
+		vertices.put(-0.6f).put(-0.4f).put(0f).put(1f).put(0f).put(0f);
+		vertices.put(0.6f).put(-0.4f).put(0f).put(0f).put(1f).put(0f);
+		vertices.put(0f).put(0.6f).put(0f).put(0f).put(0f).put(1f);
+		vertices.flip();
+		
+		while(!glfwWindowShouldClose(window)) {
+			//input();
+			//update();
+			//render();
+			
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+		}
+	}
+	
+	public void gameStart() {
+		init();
+		System.out.println("LWJGL Version " + Version.getVersion() + " is working.");
+		gameLoop();
+		
+		
+		//kills the 
+		glfwDestroyWindow(window);
+//		keyCallback.free();
+	}
+
+}

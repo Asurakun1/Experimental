@@ -1,0 +1,25 @@
+package externalPackage;
+
+public class MainJ {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Sword myBlade = new Sword(2, 2, true, true);
+		
+		post(myBlade.getHeight());
+		post(myBlade.getWidth());
+		myBlade.doubleEdged();
+		myBlade.name("The Grand Blade");
+		myBlade.singleEdge();
+		myBlade.curve();
+	}
+	
+	public static void post(int args) {
+		System.out.println(args);
+	}
+	
+	public static void post(boolean args) {
+		System.out.println(args);
+	}
+
+}

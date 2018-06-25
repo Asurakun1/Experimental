@@ -1,0 +1,16 @@
+package externalPackage;
+
+public class MainJ {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Sword myBlade = new Sword(2, 2, true, true);
+		
+		myBlade.getHeight();
+	}
+	
+	public static void postString(Sword args) {
+		System.out.println(args);
+	}
+
+}
