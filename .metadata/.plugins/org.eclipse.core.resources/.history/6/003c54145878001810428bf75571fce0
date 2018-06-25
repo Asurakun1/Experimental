@@ -21,7 +21,7 @@ public class Stats {
 	private int Dex;
 	private int Will;
 	private int Luck;
-	private int[] lvl = new int[50];
+	private int[] lvl = new int[20];
 	private int temp1, temp2, temp3, temp4, temp5;
 	private int currentlevel = 1;
 	
@@ -41,23 +41,22 @@ public class Stats {
 		//base exp for starting character
 		this.Exp = 0;
 		
-		//Initiliazing experience requirement current max level 50
+		//Initiliazing experience requirement current max level 20
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
-			reachExp = (int) (reachExp * 4.987654321);
+			reachExp = (int) (reachExp * 1.54321);
 			
-//			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
+//			System.out.println(lvl[i]);
 		}
 		
 	}
-	
-	//User-defined stats. will make limit when i feel like it
 	public Stats(int str, int Int, int Dex, int Will, int Luck) {
-		this.Str = str;
-		this.Int = Int;
-		this.Dex = Dex;
-		this.Will = Will;
-		this.Luck = Luck;
+		//stats are preset at random integers
+		this.Str = rand.nextInt(15);
+		this.Int = rand.nextInt(15);
+		this.Dex = rand.nextInt(15);
+		this.Will = rand.nextInt(15);
+		this.Luck = rand.nextInt(15);
 		
 		//base exp for starting character
 		this.Exp = 0;
@@ -65,9 +64,9 @@ public class Stats {
 		//Initiliazing experience requirement current max level 20
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
-			reachExp = (int) (reachExp * 4.987654321);
+			reachExp = (int) (reachExp * 1.54321);
 			
-//			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
+//			System.out.println(lvl[i]);
 		}
 		
 	}
@@ -142,12 +141,10 @@ public class Stats {
 			
 			System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 			System.out.println("");
-			if(add > lvl[currentlevel]) {
-				System.out.println((add - lvl[currentlevel]) + " Exp gained!");
-				System.out.println("=======================");
-				System.out.println("");
-			}
-			
+			System.out.println((add - lvl[currentlevel]) + " Exp gained!");
+			System.out.println("=======================");
+			System.out.println("");
+
 			while(Exp > lvl[currentlevel]) {
 				
 				System.out.println("Level up!");

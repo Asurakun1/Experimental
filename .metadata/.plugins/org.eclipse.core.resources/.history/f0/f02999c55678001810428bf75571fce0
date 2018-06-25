@@ -11,10 +11,10 @@ public class MainJ {
 		Random rando = new Random();
 		
 		newChar.getStats();
-//		newChar.addExp(90000);
-		for(int i = 0; i < 60; i++) {
-			newChar.addExp((int) (rando.nextInt(200)));
-		}
+		newChar.addExp(90000);
+//		for(int i = 0; i < 45; i++) {
+//			newChar.addExp((int) (rando.nextInt(500)*2.543112));
+//		}
 	}
 
 }

@@ -41,10 +41,10 @@ public class Stats {
 		//base exp for starting character
 		this.Exp = 0;
 		
-		//Initiliazing experience requirement current max level 50
+		//Initiliazing experience requirement current max level 20
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
-			reachExp = (int) (reachExp * 4.987654321);
+			reachExp = (int) (reachExp * 1.54321);
 			
 //			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
 		}
@@ -65,7 +65,7 @@ public class Stats {
 		//Initiliazing experience requirement current max level 20
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
-			reachExp = (int) (reachExp * 4.987654321);
+			reachExp = (int) (reachExp * 1.54321);
 			
 //			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
 		}

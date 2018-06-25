@@ -12,7 +12,7 @@ public class MainJ {
 		
 		newChar.getStats();
 //		newChar.addExp(90000);
-		for(int i = 0; i < 60; i++) {
+		for(int i = 0; i < 45; i++) {
 			newChar.addExp((int) (rando.nextInt(200)));
 		}
 	}

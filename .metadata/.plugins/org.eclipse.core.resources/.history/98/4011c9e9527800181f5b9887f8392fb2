@@ -6,14 +6,14 @@ public class MainJ {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Stats newChar = new Stats();
+		Stats2 newChar = new Stats2();
 		
 		Random rando = new Random();
 		
 		newChar.getStats();
-//		newChar.addExp(90000);
-		for(int i = 0; i < 60; i++) {
-			newChar.addExp((int) (rando.nextInt(200)));
+//		newChar.addExp(1101);
+		for(int i = 0; i < 45; i++) {
+			newChar.addExp((int) (rando.nextInt(500)*2.543112));
 		}
 	}
 
