@@ -1,0 +1,50 @@
+package externalPackage;
+
+import java.util.Scanner;
+
+public class Game {
+	
+	private boolean on = false;
+	private Scanner input = new Scanner(System.in);
+	private boolean start = false;
+	public Game() {
+		// TODO Auto-generated constructor stub
+		System.out.println("Initialzing system...");
+	}
+	
+	public void start() {
+		on = true;
+		theLoop();
+	}
+	
+	private void theLoop() {
+		System.out.println("Done.");
+		String input = this.input.next();
+		while(on == true) {
+			
+			//simple terminate
+			if(input.equals("exit")) {
+				on = false;
+				System.out.println("Terminating the program...");
+				Runtime.getRuntime().exit(1);
+			}
+			
+			
+			//menu
+			System.out.println("Type 'start' to start.");
+			if(input.equals("start")||input.equals("Start")){
+				start = true;
+				
+				}
+			}
+			
+			
+			
+			
+			input = this.input.next();
+		}
+		
+		this.input.close();
+	}
+	
+}

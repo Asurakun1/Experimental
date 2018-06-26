@@ -1,13 +1,14 @@
 package externalPackage;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /*
  * Level up Stat database current form is based off of RnG(Praise thee lord RnG jesus!). 
  * 
  * Future implementations is user based addition upon stat distribution
  * 
- * version 0.0.1
+ * version 0.0.2
  * 
  * @Author Asurakun1
  */
@@ -24,38 +25,50 @@ public class Stats {
 	private int[] lvl = new int[50];
 	private int temp1, temp2, temp3, temp4, temp5;
 	private int currentlevel = 1;
+	private int statpts;
+	private Scanner input = new Scanner(System.in);
 	
-	private int Exp, reachExp = 1000;
+	private int Exp = 0, reachExp = 1000;
 	
 	//RNG object. Praise thee RnG Jesus!
 	Random rand = new Random();
 	
+	public int setPts(int numberOfPoints) {
+		statpts = numberOfPoints;
+		return statpts;
+	}
+	
+	public void addPtsToStat() {
+		boolean run = true;
+		String input;
+		System.out.println("Now testing the system. if posts then does as expected.");
+		
+		while(run) {
+			
+		}
+		
+	}
+	
 	public Stats() {
 		//stats are preset at random integers
-		this.Str = rand.nextInt(15);
-		this.Int = rand.nextInt(15);
-		this.Dex = rand.nextInt(15);
-		this.Will = rand.nextInt(15);
-		this.Luck = rand.nextInt(15);
+		this.Str = 0;
+		this.Int = 0;
+		this.Dex = 0;
+		this.Will = 0;
+		this.Luck = 0;
 		
-		//base exp for starting character
-		this.Exp = 0;
-		
+		//base exp for starting character	
 		setExpRequirements();
 		
 	}
 	
 	//User-defined stats. will make limit when i feel like it
 	public Stats(int str, int Int, int Dex, int Will, int Luck) {
-		this.Str = str;
-		this.Int = Int;
-		this.Dex = Dex;
-		this.Will = Will;
-		this.Luck = Luck;
-		
-		//base exp for starting character
-		this.Exp = 0;
-		
+			this.Str = str;
+			this.Int = Int;
+			this.Dex = Dex;
+			this.Will = Will;
+			this.Luck = Luck;
 		setExpRequirements();
 	}
 	
