@@ -165,6 +165,8 @@ public class Stats {
 			calc = ((float)Exp/lvl[currentlevel])*100;
 			System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 		}
+			
+			
 		
 	}
 }

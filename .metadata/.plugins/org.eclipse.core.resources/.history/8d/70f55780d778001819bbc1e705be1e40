@@ -41,8 +41,16 @@ public class Stats {
 		//base exp for starting character
 		this.Exp = 0;
 		
-		setExpRequirements();
-		
+	}
+	
+	private void setExpRequirements() {
+		//Initiliazing experience requirement current max level 50
+		for(int i = 1; i < lvl.length; i++) {
+			lvl[i] = reachExp;
+			reachExp = (int) (reachExp * 4.987654321);
+			
+//			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
+		}
 	}
 	
 	//User-defined stats. will make limit when i feel like it
@@ -56,17 +64,14 @@ public class Stats {
 		//base exp for starting character
 		this.Exp = 0;
 		
-		setExpRequirements();
-	}
-	
-	private void setExpRequirements() {
-		//Initiliazing experience requirement current max level 50
+		//Initiliazing experience requirement current max level 20
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
 			reachExp = (int) (reachExp * 4.987654321);
 			
 //			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
 		}
+		
 	}
 	
 	public void getStats() {
@@ -165,6 +170,8 @@ public class Stats {
 			calc = ((float)Exp/lvl[currentlevel])*100;
 			System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 		}
+			
+			
 		
 	}
 }
