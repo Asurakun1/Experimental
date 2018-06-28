@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 
  * Future implementations is user based addition upon stat distribution
  * 
- * version 0.0.2
+ * version 0.1.2
  * 
  * @Author Asurakun1
  */
@@ -101,7 +101,7 @@ public class Stats {
 						}else {
 							this.Str = this.Str + inputV;
 							statpts = statpts - inputV;		
-							System.out.println("Your strength increased by " + inputV + ".\n");
+							System.out.println("Your strength has increased by " + inputV + ".\n");
 							getStats();
 							inputV = 0;
 							break;
@@ -141,7 +141,7 @@ public class Stats {
 						}else{
 							this.Int = this.Int + inputV;
 							statpts = statpts - inputV;
-							System.out.println("Your Intelligence increased by " + inputV + ".\n");
+							System.out.println("Your Intelligence has increased by " + inputV + ".\n");
 							getStats();
 							inputV = 0;
 							break;
@@ -181,7 +181,7 @@ public class Stats {
 						}else{
 							this.Dex = this.Dex + inputV;
 							statpts = statpts - inputV;
-							System.out.println("Your Dexterity increased by " + inputV + ".\n");
+							System.out.println("Your Dexterity has increased by " + inputV + ".\n");
 							getStats();
 							inputV = 0;
 							break;
@@ -218,7 +218,7 @@ public class Stats {
 						}else{
 							this.Will = this.Will + inputV;
 							statpts = statpts - inputV;
-							System.out.println("Your Will increased by " + inputV + ".\n");
+							System.out.println("Your Will has increased by " + inputV + ".\n");
 							getStats();
 							inputV = 0;
 							break;
@@ -255,7 +255,7 @@ public class Stats {
 						}else{
 							this.Luck = this.Luck + inputV;
 							statpts = statpts - inputV;
-							System.out.println("Your Luck increased by " + inputV + ".\n");
+							System.out.println("Your Luck has increased by " + inputV + ".\n");
 							getStats();
 							inputV = 0;
 							break;
@@ -280,7 +280,7 @@ public class Stats {
 	}
 	
 	public Stats() {
-		//stats are preset at random integers
+		//stats are preset at 0
 		this.Str = 0;
 		this.Int = 0;
 		this.Dex = 0;
@@ -291,25 +291,16 @@ public class Stats {
 		setExpRequirements();
 		
 	}
-	
-	//User-defined stats. will make limit when i feel like it
-	public Stats(int str, int Int, int Dex, int Will, int Luck) {
-			this.Str = str;
-			this.Int = Int;
-			this.Dex = Dex;
-			this.Will = Will;
-			this.Luck = Luck;
-		setExpRequirements();
-	}
-	
 	private void setExpRequirements() {
 		//Initiliazing experience requirement current max level 50
 		for(int i = 1; i < lvl.length; i++) {
 			lvl[i] = reachExp;
-			reachExp = (long) (reachExp * 1.543210);
-			
-//			System.out.println(lvl[i]); dont mind this. just testing out exp requirement gen
+			reachExp = (long) (reachExp * 1.5764321);
+//			reachExp = (long)(reachExp + 1000);
+//			System.out.println("Level: " + i + " " + " = " + lvl[i]); //dont mind this. just testing out exp requirement gen
 		}
+		
+		System.out.println("Exp requirements are set!");
 	}
 	
 	public void getExpRequirements() {
@@ -334,14 +325,39 @@ public class Stats {
 	
 	// reposts for every new level up
 	
-	private void getStats(int temp, int temp2, int temp3, int temp4, int temp5) {
+	private void getStats(int temp1, int temp2, int temp3, int temp4, int temp5) {
+		
 		System.out.println("Level: " + (currentlevel + 1) );
 		System.out.println("---------------");
-		System.out.println("STR: " + Str + " + " + temp1);
-		System.out.println("INT: " + Int + " + " + temp2);
+		if(temp1 == 0) {
+			System.out.println("STR: " + Str);
+		}else {	
+			System.out.println("STR: " + Str + " + " + temp1);
+		}
+		
+		if(temp2 == 0) {
+			System.out.println("INT: " + Int);
+		}else {
+			System.out.println("INT: " + Int + " + " + temp2);
+		}
+		
+		if(temp3 == 0) {
+			System.out.println("DEX: " + Dex);
+		}else {
 		System.out.println("DEX: " + Dex + " + " + temp3);
-		System.out.println("WLL: " + Will + " + "+ temp4);
-		System.out.println("LCK: " + Luck + " + "+ temp5);
+		}
+		
+		if(temp4 == 0) {
+			System.out.println("WLL: " + Will);
+		}else {
+			System.out.println("WLL: " + Will + " + "+ temp4);
+		}
+		
+		if(temp5 == 0) {
+			System.out.println("LCK: " + Luck);
+		}else {
+			System.out.println("LCK: " + Luck + " + "+ temp5);
+		}
 		System.out.println("");
 	}
 	
@@ -351,11 +367,11 @@ public class Stats {
 		
 		//making sure level up does not give +0. Total buzz kill
 		
-		temp1 = rand.nextInt(3)+1;
-		temp2 = rand.nextInt(3)+1;
-		temp3 = rand.nextInt(3)+1;
-		temp4 = rand.nextInt(3)+1;
-		temp5 = rand.nextInt(3)+1;
+		temp1 = rand.nextInt(3);
+		temp2 = rand.nextInt(3);
+		temp3 = rand.nextInt(3);
+		temp4 = rand.nextInt(3);
+		temp5 = rand.nextInt(3);
 		
 		getStats(temp1, temp2, temp3, temp4, temp5);
 		
@@ -375,20 +391,30 @@ public class Stats {
 	public void addExp(int add) {
 		float calc = 0;
 		Exp = Exp + add;
+		long tExp = Exp;
 		System.out.println(add + " Exp gained!");
 		System.out.println("=======================");
 
 		
 		//lvl array holds current exp path to next level
-		if(Exp > lvl[currentlevel]) {
+		if(tExp > lvl[currentlevel]) {
 			System.out.println("Level up!");
 			lvlUp();
 			
+			//Sets Exp back to starting position instead of same value.
+			Exp = Exp - lvl[currentlevel - 1];
 			calc = ((float)Exp/lvl[currentlevel])*100;
+			
+			if(calc > 100) {
+				calc = 100;
+			}
 			
 			System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 			System.out.println("");
+			
+			//Exp carry over if amount is greater than exp required
 			if(add > lvl[currentlevel]) {
+				
 				System.out.println((add - lvl[currentlevel]) + " Exp gained!");
 				System.out.println("=======================");
 				System.out.println("");
@@ -399,7 +425,13 @@ public class Stats {
 				System.out.println("Level up!");
 				lvlUp();
 				
+				Exp = Exp - lvl[currentlevel - 1];
+				
 				calc = ((float)Exp/lvl[currentlevel])*100;
+				
+				if(calc > 100) {
+					calc = 100;
+				}
 				
 				System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 				System.out.println("");
@@ -410,10 +442,14 @@ public class Stats {
 
 				}
 			}
-			
-		} 
+		
+		}
 		else{
 			calc = ((float)Exp/lvl[currentlevel])*100;
+			
+			if(calc > 100) {
+				calc = 100;
+			}
 			System.out.println("Progress: " + Exp + " / " + lvl[currentlevel] + " = " + (int)calc + "%" + " Complete! ");
 		}
 		
