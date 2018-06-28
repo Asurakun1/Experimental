@@ -38,6 +38,10 @@ public class Stats {
 		return statpts;
 	}
 	
+	/*
+	 * God damn AP system taking up most of my code.
+	 */
+	
 	public void addPtsToStat() {
 		boolean run = true;
 		String input = new String();
