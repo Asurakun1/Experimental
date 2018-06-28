@@ -240,6 +240,7 @@ public class Stats {
 							} catch (NumberFormatException e) {
 								System.out.println("That is not a number.");
 							}
+						
 						}
 						
 						if(inputV > statpts) {
@@ -249,11 +250,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Luck = this.Luck + inputV;
+							this.Luck = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Luck increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	

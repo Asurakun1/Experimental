@@ -253,7 +253,6 @@ public class Stats {
 							statpts = statpts - inputV;
 							System.out.println("Your Luck increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	

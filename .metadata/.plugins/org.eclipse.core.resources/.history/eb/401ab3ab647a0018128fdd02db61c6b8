@@ -61,7 +61,7 @@ public class Stats {
 				
 				input = this.input.next();
 
-				if(input.equals("exit") || input.equals("Exit")) {
+				if(input.equals("exit")) {
 					break;
 				}
 				
@@ -73,33 +73,32 @@ public class Stats {
 						
 						input = this.input.next();
 						
-						//Conversion of a String to an Integer
+						
 						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
 							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						
 						}
+						
+						try {
+							
+							inputV = Integer.parseInt(input);
+							
+						} catch (NumberFormatException e) {
+							System.out.println("This is not a number");
+							System.out.println(e.getMessage());
+						}
+						
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
 						}else if(inputV < 0) {
 							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV.intValue() == 0){
-							System.out.println("Invalid amount. Entering 0 or another type is not allowed.\n" );
+						}else if(inputV == 0){
+							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else {
-							this.Str = this.Str + inputV;
+							this.Str = inputV;
 							statpts = statpts - inputV;		
 							System.out.println("Your strength increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}
 						
@@ -111,22 +110,7 @@ public class Stats {
 					while(true) {
 						System.out.println("Intelligence has been selected. How many points would you like to distribute?");
 						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						
-						}
+						inputV = this.input.nextInt();
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -135,11 +119,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Int = this.Int + inputV;
+							this.Int = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Intelligence increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}
 						
@@ -151,22 +134,7 @@ public class Stats {
 					while(true) {
 						System.out.println("Dexterity has been selected. How many points would you like to distribute?");
 						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						
-						}
+						inputV = this.input.nextInt();
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -175,11 +143,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Dex = this.Dex + inputV;
+							this.Dex = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Dexterity increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	
@@ -189,21 +156,7 @@ public class Stats {
 					while(true) {
 						System.out.println("Will has been selected. How many points would you like to distribute?");
 						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						}
+						inputV = this.input.nextInt();
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -212,11 +165,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Will = this.Will + inputV;
+							this.Will = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Will increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	
@@ -226,21 +178,7 @@ public class Stats {
 					while(true) {
 						System.out.println("Luck has been selected. How many points would you like to distribute?");
 						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						}
+						inputV = this.input.nextInt();
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -249,11 +187,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Luck = this.Luck + inputV;
+							this.Luck = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Luck increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	

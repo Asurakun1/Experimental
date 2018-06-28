@@ -203,7 +203,9 @@ public class Stats {
 							} catch (NumberFormatException e) {
 								System.out.println("That is not a number.");
 							}
+						
 						}
+						
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -212,11 +214,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Will = this.Will + inputV;
+							this.Will = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Will increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	
@@ -226,21 +227,7 @@ public class Stats {
 					while(true) {
 						System.out.println("Luck has been selected. How many points would you like to distribute?");
 						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						}
+						inputV = this.input.nextInt();
 						
 						if(inputV > statpts) {
 							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
@@ -249,11 +236,10 @@ public class Stats {
 						}else if(inputV == 0){
 							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
 						}else{
-							this.Luck = this.Luck + inputV;
+							this.Luck = inputV;
 							statpts = statpts - inputV;
 							System.out.println("Your Luck increased by " + inputV + ".\n");
 							getStats();
-							inputV = 0;
 							break;
 						}	
 					}	
