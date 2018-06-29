@@ -9,6 +9,8 @@ import java.util.Random;
  * 
  * version 0.0.1
  * 
+ * This is an old version and will not be used. Therefore it will not be updated.
+ * 
  * @Author Asurakun1
  */
 

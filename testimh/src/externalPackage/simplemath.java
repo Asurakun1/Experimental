@@ -1,5 +1,6 @@
 /*
- * 
+ * Dont worry about this at all. this has nothing to do with the project.
+ * It's just in here for more tinkering.
  * @author: Asurakun1
  */
 package externalPackage;

@@ -33,3 +33,15 @@
 2018-06-27 15:52:49,324 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2018-06-27 17:19:33,769 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2018-06-27 21:05:48,245 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-28 18:19:30,330 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-06-28 20:33:22,226 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @8053247ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-06-28 20:33:22,340 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.8.v20171121, build timestamp: 2017-11-21T13:27:37-08:00, git hash: 82b8fb23f757335bb3329d540ce37a2a2615f0a8
+2018-06-28 20:33:22,355 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-06-28 20:33:22,355 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-06-28 20:33:22,356 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-06-28 20:33:22,371 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@60c5a3cb{/help,null,AVAILABLE}
+2018-06-28 20:33:22,389 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@5f15ed92{HTTP/1.1,[http/1.1]}{127.0.0.1:62362}
+2018-06-28 20:33:22,390 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @8053411ms
+2018-06-29 00:10:41,087 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@5f15ed92{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-06-29 00:10:41,088 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-06-29 00:10:41,094 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@60c5a3cb{/help,null,UNAVAILABLE}
