@@ -62,6 +62,16 @@ public class Stats {
 			System.out.println("Character Stats: \n");
 			getStats();
 			
+			
+			/*
+			 * Modifable stats:
+			 * Strength
+			 * Intelligence
+			 * Dexterity
+			 * Will
+			 * Luck
+			 */
+			
 			while(statpts > 0) {
 				System.out.println("You have a total of " + statpts + " ability points available for stat distributition.");
 				System.out.println("Select the stat and the amount you would like to distribute to. Type 'exit' to return back");

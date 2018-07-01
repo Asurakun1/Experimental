@@ -68,11 +68,13 @@ public class Stats {
 				
 				input = this.input.next();
 
-				if(input.equals("exit") || input.equals("Exit")) {
+				if(input.toLowerCase().equals("exit")) {
 					break;
 				}
 				
 				switch(input.toLowerCase()) {
+				
+					//Strength Allocator
 					case "str":
 						while(true) {
 							System.out.println("Strength has been selected. How many points would you like to distribute?");
@@ -80,7 +82,7 @@ public class Stats {
 							input = this.input.next();
 							
 							//Conversion of a String to an Integer
-							if(input.equals("exit") || input.equals("Exit")) {
+							if(input.toLowerCase().equals("exit")) {
 								break;
 							}else {
 							
@@ -110,227 +112,184 @@ public class Stats {
 							}
 							
 						}
-				
+						break;
+						
+						
+					//Intelligence Allocator
 					case "int":
-						
-				
-				}
-				
-				/*
-				//Strength allocator
-				if(input.equals("Str") || input.equals("str")||input.equals("STR")) {
-					while(true) {
-						System.out.println("Strength has been selected. How many points would you like to distribute?");
-						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
+						while(true) {
+							System.out.println("Intelligence has been selected. How many points would you like to distribute?");
 							
-								inputV = Integer.parseInt(input);
+							input = this.input.next();
 							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
+							//Conversion of a String to an Integer
+							if(input.toLowerCase().equals("exit")) {
+								break;
+							}else {
+							
+								try {
+								
+									inputV = Integer.parseInt(input);
+								
+								} catch (NumberFormatException e) {
+									System.out.println("That is not a number.");
+								}
+							
 							}
-						
+							
+							if(inputV > statpts) {
+								System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
+							}else if(inputV < 0) {
+								System.out.println("Invalid amount. Type cannot be a negative value.\n");
+							}else if(inputV == 0){
+								System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
+							}else{
+								this.Int = this.Int + inputV;
+								statpts = statpts - inputV;
+								System.out.println("Your Intelligence has increased by " + inputV + ".\n");
+								getStats();
+								inputV = 0;
+								break;
+							}
+							
 						}
+						break;
 						
-						if(inputV > statpts) {
-							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
-						}else if(inputV < 0) {
-							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV.intValue() == 0){
-							System.out.println("Invalid amount. Entering 0 or another type is not allowed.\n" );
-						}else {
-							this.Str = this.Str + inputV;
-							statpts = statpts - inputV;		
-							System.out.println("Your strength has increased by " + inputV + ".\n");
-							getStats();
-							inputV = 0;
-							break;
+						
+					//Dex Allocator
+					case"dex":
+						while(true) {
+							System.out.println("Dexterity has been selected. How many points would you like to distribute?");
+							
+							input = this.input.next();
+							
+							//Conversion of a String to an Integer
+							if(input.toLowerCase().equals("exit")) {
+								break;
+							}else {
+							
+								try {
+								
+									inputV = Integer.parseInt(input);
+								
+								} catch (NumberFormatException e) {
+									System.out.println("That is not a number.");
+								}
+							
+							}
+							
+							if(inputV > statpts) {
+								System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
+							}else if(inputV < 0) {
+								System.out.println("Invalid amount. Type cannot be a negative value.\n");
+							}else if(inputV == 0){
+								System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
+							}else{
+								this.Dex = this.Dex + inputV;
+								statpts = statpts - inputV;
+								System.out.println("Your Dexterity has increased by " + inputV + ".\n");
+								getStats();
+								inputV = 0;
+								break;
+							}	
 						}
+						break;
+						
+						
+					//Will Allocator
+					case "wll":
+					case "will":
+						while(true) {
+							System.out.println("Will has been selected. How many points would you like to distribute?");
+							
+							input = this.input.next();
+							
+							//Conversion of a String to an Integer
+							if(input.toLowerCase().equals("exit")) {
+								break;
+							}else {
+							
+								try {
+								
+									inputV = Integer.parseInt(input);
+								
+								} catch (NumberFormatException e) {
+									System.out.println("That is not a number.");
+								}
+							}
+							
+							if(inputV > statpts) {
+								System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
+							}else if(inputV < 0) {
+								System.out.println("Invalid amount. Type cannot be a negative value.\n");
+							}else if(inputV == 0){
+								System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
+							}else{
+								this.Will = this.Will + inputV;
+								statpts = statpts - inputV;
+								System.out.println("Your Will has increased by " + inputV + ".\n");
+								getStats();
+								inputV = 0;
+								break;
+							}	
+						}
+						break;
+						
+						
+					//Luck Allocator
+					case "lck":
+					case "luck":
+						while(true) {
+							System.out.println("Luck has been selected. How many points would you like to distribute?");
+							
+							input = this.input.next();
+							
+							//Conversion of a String to an Integer
+							if(input.toLowerCase().equals("exit")) {
+								break;
+							}else {
+							
+								try {
+								
+									inputV = Integer.parseInt(input);
+								
+								} catch (NumberFormatException e) {
+									System.out.println("That is not a number.");
+								}
+							}
+							
+							if(inputV > statpts) {
+								System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
+							}else if(inputV < 0) {
+								System.out.println("Invalid amount. Type cannot be a negative value.\n");
+							}else if(inputV == 0){
+								System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
+							}else{
+								this.Luck = this.Luck + inputV;
+								statpts = statpts - inputV;
+								System.out.println("Your Luck has increased by " + inputV + ".\n");
+								getStats();
+								inputV = 0;
+								break;
+							}	
+						}
+						break;
 						
 					}
-					
-				}
-				
-				*/
-				
-				
-				/*
-				//Intelligence allocator
-				if(input.equals("Int") || input.equals("int")||input.equals("INT")) {
-					while(true) {
-						System.out.println("Intelligence has been selected. How many points would you like to distribute?");
-						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						
-						}
-						
-						if(inputV > statpts) {
-							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
-						}else if(inputV < 0) {
-							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV == 0){
-							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
-						}else{
-							this.Int = this.Int + inputV;
-							statpts = statpts - inputV;
-							System.out.println("Your Intelligence has increased by " + inputV + ".\n");
-							getStats();
-							inputV = 0;
-							break;
-						}
-						
-					}
-					
-				}
-				
-				*/
-				
-				/*
-				//Dexterity allocator
-				if(input.equals("Dex") || input.equals("dex")||input.equals("DEX")) {
-					while(true) {
-						System.out.println("Dexterity has been selected. How many points would you like to distribute?");
-						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						
-						}
-						
-						if(inputV > statpts) {
-							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
-						}else if(inputV < 0) {
-							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV == 0){
-							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
-						}else{
-							this.Dex = this.Dex + inputV;
-							statpts = statpts - inputV;
-							System.out.println("Your Dexterity has increased by " + inputV + ".\n");
-							getStats();
-							inputV = 0;
-							break;
-						}	
-					}	
-				}
-				
-				*/
-				//Will allocator
-				if(input.equals("will") || input.equals("Will") || input.equals("Wll") || input.equals("wll")||input.equals("WLL")) {
-					while(true) {
-						System.out.println("Will has been selected. How many points would you like to distribute?");
-						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						}
-						
-						if(inputV > statpts) {
-							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
-						}else if(inputV < 0) {
-							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV == 0){
-							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
-						}else{
-							this.Will = this.Will + inputV;
-							statpts = statpts - inputV;
-							System.out.println("Your Will has increased by " + inputV + ".\n");
-							getStats();
-							inputV = 0;
-							break;
-						}	
-					}	
-				}
-				//Luck allocator
-				if(input.equals("Luck") || input.equals("luck") || input.equals("lck")||input.equals("LCK")||input.equals("Lck")) {
-					while(true) {
-						System.out.println("Luck has been selected. How many points would you like to distribute?");
-						
-						input = this.input.next();
-						
-						//Conversion of a String to an Integer
-						if(input.equals("exit") || input.equals("Exit")) {
-							break;
-						}else {
-						
-							try {
-							
-								inputV = Integer.parseInt(input);
-							
-							} catch (NumberFormatException e) {
-								System.out.println("That is not a number.");
-							}
-						}
-						
-						if(inputV > statpts) {
-							System.out.println("Invalid amount. Exeeded the total amount of points available.\n");
-						}else if(inputV < 0) {
-							System.out.println("Invalid amount. Type cannot be a negative value.\n");
-						}else if(inputV == 0){
-							System.out.println("Invalid amount. You cannot add nothing with nothing.\n" );
-						}else{
-							this.Luck = this.Luck + inputV;
-							statpts = statpts - inputV;
-							System.out.println("Your Luck has increased by " + inputV + ".\n");
-							getStats();
-							inputV = 0;
-							break;
-						}	
-					}	
-					
-				}
 				
 //				getStats();
 				
 			} //end of loop
-			System.out.println("Type 'exit' to exit the stat menu");
+			System.out.println("Type 'exit' to exit the stat menu or 'stats' for stat menu");
 			input = this.input.next();
 			
-			if(input.equals("exit") || input.equals("Exit")) {
+			if(input.toLowerCase().equals("exit")) {
 				run = false;
 				return;
+			}else if(input.toLowerCase().equals("stats")) {
+				//do nothing just repeat iteration
+			}else {
+				System.out.println(input + " does not exists.");
 			}
 			
 		}
