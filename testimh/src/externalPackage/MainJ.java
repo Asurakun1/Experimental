@@ -11,18 +11,19 @@ public class MainJ {
 //		game.start();
 		Stats test = new Stats();
 		
-//		test.setPts(100);
-//		test.addPtsToStat();
+		test.setPts(100);
+		test.addPtsToStat();
 		
-//		for(int i = 0; i < 40; i++) {
-//			test.addExp(rand.nextInt(500));
-//		}
+//		for(int i = 0; i < 10; i++) {
+	//		test.addExp(rand.nextInt(1000));
+	//	}
 //		test.addExp(500);
 //		test.addExp(500);
 //		test.addExp(500);
 //		test.addExp(500);
-		test.addExp(50000);
-		
+//		test.addExp(5000);
+		test.addExp(5000000);
+//		test.getExpRequirements();
 	}
 
 }
