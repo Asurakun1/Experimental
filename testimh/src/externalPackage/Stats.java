@@ -370,14 +370,14 @@ public class Stats {
 	public void getStats() {
 		
 		//this just posts your stats. nothing much here.
-		System.out.println("Level: " + currentlevel);
+		System.out.println("\nLevel: " + currentlevel);
 		System.out.println("---------------");
 		System.out.println("STR: " + Str);
 		System.out.println("INT: " + Int);
 		System.out.println("DEX: " + Dex);
 		System.out.println("WLL: " + Will);
 		System.out.println("LCK: " + Luck);
-		System.out.println("");
+		System.out.println("---------------");
 	}
 	
 	/*stat getters right here are to be used for sub class purposes only
