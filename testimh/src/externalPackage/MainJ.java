@@ -9,20 +9,27 @@ public class MainJ {
 		Random rand = new Random();
 //		Game game = new Game();
 //		game.start();
-		Stats test = new Stats();
 		
-		test.setPts(100);
-		test.addPtsToStat();
+		Attributes tester = new Attributes();
+//		Stats test = new Stats();
+//		tester.setPts(100);
+//		tester.addPtsToStat();
+//		
+//		test.setPts(100);
+//		test.addPtsToStat();
 		
-//		for(int i = 0; i < 10; i++) {
-	//		test.addExp(rand.nextInt(1000));
-	//	}
+		
+//		for(int i = 0; i < 50; i++) {
+//			tester.addExp(rand.nextInt(5000));
+//		}
+		
+		tester.getCondition();
 //		test.addExp(500);
 //		test.addExp(500);
-//		test.addExp(500);
-//		test.addExp(500);
+//		tester.addExp(500);
+//		tester.addExp(500);
 //		test.addExp(5000);
-		test.addExp(5000000);
+//		tester.addExp(5000000);
 //		test.getExpRequirements();
 	}
 

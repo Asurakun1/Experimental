@@ -1,9 +1,0 @@
-package GameTest;
-
-public class GameEx {
-
-	public GameEx() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

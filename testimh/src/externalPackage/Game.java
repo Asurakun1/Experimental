@@ -17,8 +17,8 @@ public class Game {
 		theLoop();
 	}
 	
-	private boolean gameStart() {
-		Stats playerStats = new Stats();
+	private void gameStart() {
+		Attributes playerStats = new Attributes();
 		playerStats.setPts(30);						//Starting stat points
 		String playername;
 		String input;
@@ -34,7 +34,7 @@ public class Game {
 		while(start == true) {
 			if(input.equals("exit")) {
 				start = false;	
-				return false;
+				break;
 			}
 			
 			if(input.equals("stats") || input.equals("Stats")) {
@@ -43,7 +43,7 @@ public class Game {
 			
 			input = this.input.next();
 		}
-		return start;
+		return;
 	}
 	
 	private void theLoop() {
