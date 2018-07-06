@@ -26,8 +26,9 @@ public class Stats {
 	private int Luck;
 	private int[] lvl = new int[52];
 	private int temp1, temp2, temp3, temp4, temp5;
-	private int currentlevel, levelcounter = 1;
-	private int statpts;
+	private int currentLevel, levelCounter = 1;
+	private int statpts, levelLooper;
+	private boolean leveled;
 	private Scanner input = new Scanner(System.in);
 	
 	private int Exp = 0, reachExp = 1000;
@@ -325,9 +326,9 @@ public class Stats {
 	private void setExpRequirements() {
 		//Initiliazing experience requirement current max level 50
 		
-		currentlevel = 1;
+		currentLevel = 1;
 		
-		for(int i = currentlevel; i <= lvl.length; i++) {
+		for(int i = currentLevel; i <= lvl.length; i++) {
 			//Exp requirements based on level instead of iterated gen
 			
 			// lvl 1 - 10
@@ -370,7 +371,7 @@ public class Stats {
 	public void getStats() {
 		
 		//this just posts your stats. nothing much here.
-		System.out.println("\nLevel: " + currentlevel);
+		System.out.println("\nLevel: " + currentLevel);
 		System.out.println("---------------");
 		System.out.println("STR: " + Str);
 		System.out.println("INT: " + Int);
@@ -400,6 +401,24 @@ public class Stats {
 		return Luck;
 	}
 	
+	public int getDex() {
+		return Dex;
+	}
+	
+	public int getLevel() {
+		return currentLevel;
+	}
+	
+	public boolean hasLeveled() {
+		return leveled;
+	}
+	
+	public int getLevelLooper() {
+		return levelLooper;
+	}
+	
+	
+	
 	/*
 	-------------------------------------------------------
 	end of getters for subclass purposes
@@ -409,7 +428,7 @@ public class Stats {
 	
 	private void getStats(int temp1, int temp2, int temp3, int temp4, int temp5) {
 		
-		System.out.println("Level: " + (currentlevel) );
+		System.out.println("Level: " + (currentLevel) );
 		System.out.println("---------------");
 		if(temp1 == 0) {
 			System.out.println("STR: " + Str);
@@ -455,7 +474,7 @@ public class Stats {
 		//Buzz kill or not. Hail Mary on RnG
 		
 		//one up!
-		currentlevel = currentlevel + 1;
+		currentLevel = currentLevel + 1;
 		
 		temp1 = rand.nextInt(3);
 		temp2 = rand.nextInt(3);
@@ -464,12 +483,12 @@ public class Stats {
 		temp5 = rand.nextInt(3);
 
 		
-		if(levelcounter == 10){
+		if(levelCounter == 10){
 			setPts(10);
-			levelcounter = 0;
+			levelCounter = 0;
 		}
 		
-		levelcounter++;
+		levelCounter++;
 		
 		getStats(temp1, temp2, temp3, temp4, temp5);
 		
@@ -478,6 +497,8 @@ public class Stats {
 		this.Dex = Dex + temp3;
 		this.Will = Will + temp4;
 		this.Luck = Luck + temp5;
+		
+		leveled = true;
 		
 	}
 	
@@ -500,17 +521,24 @@ public class Stats {
 			temp4 = temp4 + rand.nextInt(3);
 			temp5 = temp5 + rand.nextInt(3);
 			
-			levelcounter++;
+			levelCounter++;
 			//statpoint giver. +10 per 10 levels 50 additional stat pts in total
 			
-			if(levelcounter == 10){
+			if(levelCounter == 10){
 				setPts(10);
-				levelcounter = 0;
+				levelCounter = 0;
 			}
 		}
 		
 		getStats(temp1, temp2, temp3, temp4, temp5);
 		
+		this.Str = Str + temp1;
+		this.Int = Int + temp2;
+		this.Dex = Dex + temp3;
+		this.Will = Will + temp4;
+		this.Luck = Luck + temp5;
+		
+		leveled = true;
 	}
 	
 	//The stuff that really works here.
@@ -529,81 +557,81 @@ public class Stats {
 		float calc = 0;
 		Exp = Exp + add;
 		int tExp = add;
-		int loop = 0;
+		levelLooper = 0;
 		System.out.println(format.format(add) + " Exp gained!");
 		System.out.println("=======================");
 		
 		
 		//stops the player from going passed the level cap
-		if(currentlevel == lvl.length - 2) {
-			System.out.println("You have reached the max level: " + currentlevel + "!");
+		if(currentLevel == lvl.length - 2) {
+			System.out.println("You have reached the max level: " + currentLevel + "!");
 			return;
 		}
 
 		
 		//lvl array holds current exp path to next level
-		if(Exp > lvl[currentlevel]) {
+		if(Exp > lvl[currentLevel]) {
 			System.out.println("Level up!");
 			
 			lvlUp(); //current level + 1
 			
-			System.out.println(format.format((Exp - lvl[currentlevel - 1])) + " Exp carried over!");
+			System.out.println(format.format((Exp - lvl[currentLevel - 1])) + " Exp carried over!");
 			System.out.println("=======================");
 			System.out.println("");
 
 			//Sets Exp back to starting position instead of same value.
-			Exp = Exp - lvl[currentlevel-1]; //record of previous reachExp
-			calc = ((float)Exp/lvl[currentlevel + 1])*100;//calculates the Exp/RequireExp in a percentaged based format
+			Exp = Exp - lvl[currentLevel-1]; //record of previous reachExp
+			calc = ((float)Exp/lvl[currentLevel + 1])*100;//calculates the Exp/RequireExp in a percentaged based format
 			
 			//if it goes over just keep at 100%
 			if(calc > 100) {
 				calc = 100;
 			}
 			
-			System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentlevel]) + " = " + (int)calc + "%" + " Complete! ");
+			System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentLevel]) + " = " + (int)calc + "%" + " Complete! ");
 			System.out.println("");
 			
 			//Exp carry over if amount is greater than exp required
-			if(Exp > lvl[currentlevel]) {
+			if(Exp > lvl[currentLevel]) {
 				
-				System.out.println(format.format((Exp - lvl[currentlevel])) + " Exp gained!");
+				System.out.println(format.format((Exp - lvl[currentLevel])) + " Exp gained!");
 				System.out.println("=======================");
 				System.out.println("");
 			}
 			
-			while(Exp > lvl[currentlevel]) {
+			while(Exp > lvl[currentLevel]) {
 				//While the gained Exp is larger than the required Exp to level
 				
 				//level capper
-				if(currentlevel == lvl.length - 2) {
-					System.out.println("You have reached the max level: " + currentlevel + "!");
+				if(currentLevel == lvl.length - 2) {
+					System.out.println("You have reached the max level: " + currentLevel + "!");
 					break;
 				}
 				
-				currentlevel++;			//incrementer and Level accumulator
-				loop++;					//Recording how many levels the player has passed
-				Exp = Exp - lvl[currentlevel - 1]; //record of current reachExp.
+				currentLevel++;			//incrementer and Level accumulator
+				levelLooper++;					//Recording how many levels the player has passed
+				Exp = Exp - lvl[currentLevel - 1]; //record of current reachExp.
 				
-				//System.out.println(Exp  + " - " + lvl[currentlevel] + " " + loop); //keep this for logging
+				//System.out.println(Exp  + " - " + lvl[currentLevel] + " " + loop); //keep this for logging
 				
-				calc = ((float)Exp/lvl[currentlevel + 1])*100;
+				calc = ((float)Exp/lvl[currentLevel + 1])*100;
 				
 				if(calc > 100) {
 					calc = 100;
 				}
 				
-				int post = (Exp - lvl[currentlevel + 1]);
+				int post = (Exp - lvl[currentLevel + 1]);
 				
-				if(post > lvl[currentlevel + 1]) {
-					System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentlevel + 1]) + " = " + (int)calc + "%" + " Complete! ");
+				if(post > lvl[currentLevel + 1]) {
+					System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentLevel + 1]) + " = " + (int)calc + "%" + " Complete! ");
 					System.out.println("");
 				}
 				
 				//Exp carry over system
-				if(Exp > lvl[currentlevel]) {
+				if(Exp > lvl[currentLevel]) {
 					
-					if(post > lvl[currentlevel + 1]) {
-						System.out.println(format.format((Exp - lvl[currentlevel + 1])) + " Exp gained!");
+					if(post > lvl[currentLevel + 1]) {
+						System.out.println(format.format((Exp - lvl[currentLevel + 1])) + " Exp gained!");
 						System.out.println("=======================");
 						System.out.println("");
 					}
@@ -612,7 +640,7 @@ public class Stats {
 
 			}
 			
-			if(loop > 0) {
+			if(levelLooper > 0) {
 				
 				/*
 				 * This statement accumulates the amount of levels passed from the previous while loop.
@@ -621,25 +649,27 @@ public class Stats {
 				
 				System.out.println("Level up!");
 				
-				lvlUp(loop);
+				lvlUp(levelLooper);
 				
 				System.out.println(format.format((Exp)) + " Exp carried over!");
 				System.out.println("=======================");
 				System.out.println("");
 				
-				System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentlevel + 1]) + " = " + (int)calc + "%" + " Complete! \n");
-				System.out.println("You have gained: " + loop + " levels from a total of " + format.format(tExp) + " EXP.\n");
+				System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentLevel + 1]) + " = " + (int)calc + "%" + " Complete! \n");
+				System.out.println("You have gained: " + levelLooper + " levels from a total of " + format.format(tExp) + " EXP.\n");
+				
 			}
 			
 		}
 		else{
+			leveled = false;
 			//Else just gain exp like every other basic system
-			calc = ((float)Exp/lvl[currentlevel])*100;
+			calc = ((float)Exp/lvl[currentLevel])*100;
 			
 			if(calc > 100) {
 				calc = 100;
 			}
-			System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentlevel]) + " = " + (int)calc + "%" + " Complete! \n");
+			System.out.println("Progress: " + format.format(Exp) + " / " + format.format(lvl[currentLevel]) + " = " + (int)calc + "%" + " Complete! \n");
 		}
 		
 	}

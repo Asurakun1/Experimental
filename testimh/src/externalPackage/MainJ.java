@@ -19,17 +19,23 @@ public class MainJ {
 //		test.addPtsToStat();
 		
 		
-//		for(int i = 0; i < 50; i++) {
-//			tester.addExp(rand.nextInt(5000));
-//		}
-		tester.getStats();
-		tester.getCondition();
+		for(int i = 0; i < 50; i++) {
+			tester.addExp(rand.nextInt(5000));
+
+				tester.updateMaxAttributes();
+		}
+		
+//		tester.getStats();
+//		tester.getCondition();
 //		test.addExp(500);
 //		test.addExp(500);
 //		tester.addExp(500);
 //		tester.addExp(500);
 //		test.addExp(5000);
-//		tester.addExp(5000000);
+		tester.addExp(5000000);
+//		tester.getStats();
+		tester.updateMaxAttributes(tester.getLevelLooper());
+		tester.getCondition();
 //		test.getExpRequirements();
 	}
 
